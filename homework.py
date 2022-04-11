@@ -87,9 +87,9 @@ class Running(Training):
         """Получить количество затраченных калорий."""
         self.coeff_calorie_1 = 18
         self.coeff_calorie_2 = 20
-        return ((self.coeff_calorie_1 * self.get_mean_speed() -
-                self.coeff_calorie_2) * self.weight / self.M_IN_KM *
-                (self.duration * self.MIN_IN_HOUR))
+        return ((self.coeff_calorie_1 * self.get_mean_speed()
+                - self.coeff_calorie_2) * self.weight / self.M_IN_KM
+                * (self.duration * self.MIN_IN_HOUR))
 
 
 class SportsWalking(Training):
@@ -119,8 +119,8 @@ class SportsWalking(Training):
         self.coeff_calorie_1 = 0.035
         self.coeff_calorie_2 = 0.029
         return ((self.coeff_calorie_1 * self.weight + (self.get_mean_speed()
-                ** 2 // self.height) * self.coeff_calorie_2 * self.weight) *
-                (self.duration * self.MIN_IN_HOUR))
+                ** 2 // self.height) * self.coeff_calorie_2 * self.weight)
+                * (self.duration * self.MIN_IN_HOUR))
 
 
 class Swimming(Training):
@@ -148,15 +148,15 @@ class Swimming(Training):
 
     def get_mean_speed(self) -> float:
         """Получить среднюю скорость движения."""
-        return (self.length_pool * self.count_pool / self.M_IN_KM /
-                self.duration)  # в км\ч
+        return (self.length_pool * self.count_pool / self.M_IN_KM
+                / self.duration)  # в км\ч
 
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
         self.coeff_calorie_1 = 1.1
         self.coeff_calorie_2 = 2
-        return ((self.get_mean_speed() + self.coeff_calorie_1) *
-                self.coeff_calorie_2 * self.weight)
+        return ((self.get_mean_speed() + self.coeff_calorie_1)
+                * self.coeff_calorie_2 * self.weight)
 
 
 def read_package(workout_type: str, data: list) -> Training:
@@ -165,7 +165,7 @@ def read_package(workout_type: str, data: list) -> Training:
         'SWM': Swimming,
         'RUN': Running,
         'WLK': SportsWalking
-        }
+    }
     for abr in dict_training_type:
         if workout_type == abr:
             return dict_training_type[abr](*data)
@@ -182,7 +182,7 @@ if __name__ == '__main__':
         ('SWM', [720, 1, 80, 25, 40]),
         ('RUN', [15000, 1, 75]),
         ('WLK', [9000, 1, 75, 180]),
-        ]
+         ]
 
     for workout_type, data in packages:
         training = read_package(workout_type, data)
