@@ -23,9 +23,9 @@ class InfoMessage:
 
     def get_message(self) -> str:
         """Возвращает сообщение с данными о тренировке."""
-        return ((f'Тип тренировки: {self.training_type}; Длительность:')
-                + (f'{self.duration:.3f} ч.; Дистанция: {self.distance:.3f}')
-                + (f'км; Ср. скорость: {self.speed:.3f} км/ч; Потрачено')
+        return ((f'Тип тренировки: {self.training_type}; Длительность: ')
+                + (f'{self.duration:.3f} ч.; Дистанция: {self.distance:.3f} ')
+                + (f'км; Ср. скорость: {self.speed:.3f} км/ч; Потрачено ')
                 + (f'ккал: {self.calories:.3f}.'))
 
 
