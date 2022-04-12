@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+
 @dataclass(init=True)
 class InfoMessage:
     """Информационное сообщение о тренировке."""
@@ -41,7 +42,7 @@ class Training:
         self.duration = duration  # длительность тренировки в ч
         self.weight = weight  # вес спортсмена
         self.training_type = self.__class__.__name__  # тип тренировки на
-            # основе названия класса
+        # основе названия класса
 
     def get_distance(self) -> float:
         """Получить дистанцию в км."""
