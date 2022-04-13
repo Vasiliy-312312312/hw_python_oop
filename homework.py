@@ -24,7 +24,7 @@ class Training:
 
     MIN_IN_1_HOUR: int = 60  # Константа для перевода длительности из ч в мин
     LEN_STEP: float = 0.65  # расстояние в м за один шаг
-    M_IN_1_KM: int = 1000  # константа для перевода значений из м в км
+    M_IN_KM: int = 1000  # константа для перевода значений из м в км
 
     def __init__(self,
                  action: int,
@@ -40,7 +40,7 @@ class Training:
 
     def get_distance(self) -> float:
         """Получить дистанцию в км."""
-        return self.action * self.LEN_STEP / self.M_IN_1_KM
+        return self.action * self.LEN_STEP / self.M_IN_KM
 
     def get_mean_speed(self) -> float:
         """Получить среднюю скорость движения."""  # в км\ч
@@ -70,7 +70,7 @@ class Running(Training):
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
         return ((self.COEFF_CALORIE_1 * self.get_mean_speed()
-                - self.COEFF_CALORIE_2) * self.weight / self.M_IN_1_KM
+                - self.COEFF_CALORIE_2) * self.weight / self.M_IN_KM
                 * (self.duration * self.MIN_IN_1_HOUR))
 
 
@@ -119,7 +119,7 @@ class Swimming(Training):
 
     def get_mean_speed(self) -> float:
         """Получить среднюю скорость движения."""
-        return (self.length_pool * self.count_pool / self.M_IN_1_KM
+        return (self.length_pool * self.count_pool / self.M_IN_KM
                 / self.duration)  # в км\ч
 
     def get_spent_calories(self) -> float:
