@@ -138,7 +138,7 @@ def read_package(workout_type: str, data: list) -> Training:
     if workout_type in dict_training_type:
         return dict_training_type[workout_type](*data)
     else:
-        raise AttributeError ('Датчики передали неизвестный вид тренировки')
+        raise AttributeError  ('Датчики передали неизвестный вид тренировки')
 
 
 def main(training: Training) -> None:
